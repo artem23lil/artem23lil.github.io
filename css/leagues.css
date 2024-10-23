@@ -1,0 +1,36 @@
+body {
+    font-family: 'Georgia', serif;
+    background-color: #ffe6e6; /* Светло-красный фон для страницы Лиги */
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    color: #FF5733; /* Цвет заголовка */
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    color: #333; /* Цвет текста */
+}
+
+#nav {
+    margin-top: 20px;
+}
+
+#nav button {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #FF5733;
+    color: white;
+    border: none;
+    border-radius: 5px; /* Скругленные углы кнопок */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#nav button:hover {
+    background-color: #c0392b;
+}

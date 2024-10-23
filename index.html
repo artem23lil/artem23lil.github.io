@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medieval Castle Defense</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Стили для модального окна */
+    #modal {
+      display: none; /* Скрыто по умолчанию */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+
+    #modalContent {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 300px;
+      text-align: center;
+    }
+
+    #game {
+      display: none; /* Скрыто до ввода данных */
+    }
+
+    /* Стили для аватаров */
+    .avatar {
+      cursor: pointer;
+      margin: 5px;
+      border: 2px solid transparent;
+      transition: border 0.3s;
+    }
+
+    .avatar:hover {
+      border: 2px solid #007BFF; /* Цвет рамки при наведении */
+    }
+
+    .selected {
+      border: 2px solid #007BFF; /* Цвет рамки для выбранного аватара */
+    }
+
+    #avatarContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Модальное окно для ввода имени и аватара -->
+  <div id="modal">
+    <div id="modalContent">
+      <label for="nickname">Введите ваш ник:</label>
+      <input type="text" id="nickname" placeholder="Введите ваш ник" />
+      
+      <div>
+        <label>Выберите аватар:</label>
+        <div id="avatarContainer">
+          <img src="assets/images/avatar1.png" alt="Аватар 1" class="avatar" data-value="assets/images/avatar1.png" width="60">
+          <img src="assets/images/avatar2.png" alt="Аватар 2" class="avatar" data-value="assets/images/avatar2.png" width="60">
+          <img src="assets/images/avatar3.png" alt="Аватар 3" class="avatar" data-value="assets/images/avatar3.png" width="60">
+          <img src="assets/images/avatar4.png" alt="Аватар 4" class="avatar" data-value="assets/images/avatar4.png" width="60">
+          <img src="assets/images/avatar5.png" alt="Аватар 5" class="avatar" data-value="assets/images/avatar5.png" width="60">
+          <img src="assets/images/avatar6.png" alt="Аватар 6" class="avatar" data-value="assets/images/avatar6.png" width="60">
+          <img src="assets/images/avatar7.png" alt="Аватар 7" class="avatar" data-value="assets/images/avatar7.png" width="60">
+        </div>
+      </div>
+      
+      <button id="submitPlayerInfo">Подтвердить</button>
+    </div>
+  </div>
+  
+  <div id="playerDisplay"></div> <!-- Для отображения ника -->
+
+  <div id="game">
+    <div id="castle">Замок (Уровень 1) 🏰</div>
+    <div id="resources">
+      <p>
+        <img src="assets/images/wood.png" alt="Дерево" width="30"> Дерево: <span id="wood">0</span>
+      </p>
+      <p>
+        <img src="assets/images/stone.png" alt="Камень" width="30"> Камень: <span id="stone">0</span>
+      </p>
+    </div>
+    <div id="controls">
+      <button id="upgradeCastle">Улучшить замок</button>
+      <button id="launchWave">Запустить волну</button>
+    </div>
+    <div id="enemies">
+      <p>Волна врагов: <span id="wave">1</span></p>
+      <div id="enemy">👹</div>
+    </div>
+    <div id="nav">
+      <a href="pages/army.html"><button id="army">Армия</button></a>
+      <a href="pages/friends.html"><button id="friends">Друзья</button></a>
+      <a href="pages/leagues.html"><button id="leagues">Лиги</button></a>
+      <a href="pages/shop.html"><button id="shop">Магазин</button></a>
+    </div>
+  </div>
+
+  <div id="pages">
+    <div id="armyPage" class="page" style="display:none;">Содержимое Армии</div>
+    <div id="friendsPage" class="page" style="display:none;">Содержимое Друзей</div>
+    <div id="leaguesPage" class="page" style="display:none;">Содержимое Лиг</div>
+    <div id="shopPage" class="page" style="display:none;">Содержимое Магазина</div>
+  </div>
+
+  <script src="js/gema.js"></script>
+  <script>
+    // Открыть модальное окно при загрузке страницы
+    window.onload = function() {
+      document.getElementById('modal').style.display = 'block';
+    };
+
+    let selectedAvatar = '';
+
+    // Добавляем обработчик кликов для аватаров
+    document.querySelectorAll('.avatar').forEach(avatar => {
+      avatar.addEventListener('click', () => {
+        // Убираем класс 'selected' у всех аватаров
+        document.querySelectorAll('.avatar').forEach(av => av.classList.remove('selected'));
+        // Добавляем класс 'selected' для текущего аватара
+        avatar.classList.add('selected');
+        selectedAvatar = avatar.getAttribute('data-value'); // Сохраняем значение выбранного аватара
+      });
+    });
+
+    document.getElementById('submitPlayerInfo').addEventListener('click', () => {
+      const nickname = document.getElementById('nickname').value;
+
+      if (nickname && selectedAvatar) {
+        document.getElementById('playerDisplay').textContent = `Игрок: ${nickname}`;
+        document.getElementById('playerDisplay').style.display = 'block';
+        document.getElementById('game').style.display = 'block'; // Показать игру
+        document.getElementById('modal').style.display = 'none'; // Скрыть модальное окно
+      } else {
+        alert('Пожалуйста, введите ваш ник и выберите аватар.');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+/* Общие стили для всего сайта */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    color: #8B4513; /* Цвет заголовка */
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    color: #333; /* Цвет текста */
+}
+
+#nav {
+    margin-top: 20px;
+}
+
+#nav button {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px; /* Скругленные углы кнопок */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#nav button:hover {
+    background-color: #45a049;
+}

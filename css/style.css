@@ -1,0 +1,83 @@
+body {
+  font-family: 'Georgia', serif;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 50px;
+}
+
+#game {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid #8B4513; /* Коричневая рамка для замка */
+}
+
+#castle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #8B4513; /* Цвет для текста замка */
+  margin-bottom: 20px;
+}
+
+#resources, #controls, #enemies {
+  margin: 20px 0;
+  font-size: 18px; /* Увеличен размер шрифта для ресурсов */
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px; /* Скругленные углы кнопок */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#enemy {
+  font-size: 30px;
+  margin-top: 10px;
+  color: #B22222; /* Цвет врага */
+}
+
+#enemies p {
+  font-size: 20px; /* Увеличен размер шрифта для врагов */
+  color: #8B0000; /* Цвет текста для волн врагов */
+}
+
+#nav {
+  margin-top: 20px;
+}
+
+#nav button {
+  background-color: #008CBA; /* Цвет для навигационных кнопок */
+}
+
+#nav button:hover {
+  background-color: #007B9A;
+}
+/* Дополнительные стили для формы ввода ника и страниц */
+#playerInfo {
+  margin-bottom: 20px;
+}
+
+#playerDisplay {
+  font-size: 20px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.page {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
